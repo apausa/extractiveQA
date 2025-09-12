@@ -1,2 +1,2 @@
-# deepLearning
-Deep Learning project at Technical University of Madrid
+# naturalLanguageProcessing
+Natural Language Processing project at Technical University of Madrid
