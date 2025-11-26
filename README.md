@@ -1,47 +1,16 @@
-# Deep Learning Para El Procesamiento Del Lenguaje Natural
+# Fine-tuning DistilBERT for Extractive Question Answering Using Stanford Question Answering Dataset with Sliding Windows Preprocessing
 
-## Descripción
+Este proyecto demuestra el fine-tuning de DistilBERT para el _extractive question-answering_ usando el Stanford Question Answering Dataset (SQuAD) con preprocesamiento de ventanas deslizantes. A diferencia de los enfoques generativos que crean texto, esta tarea identifica y extrae el fragmento exacto del texto a partir del contexto en el que se enmarca una pregunta.
 
-El objetivo de esta actividad es que el estudiante demuestre la capacidad de seleccionar, configurar y ejecutar el ajuste fino (fine-tuning) de un Modelo de Lenguaje (LM) preentrenado para una tarea específica de Procesamiento del Lenguaje Natural (NLP).
+Se ha seleccionado DistilBERT en lugar de modelos como BERT por razones de eficiencia computacional: al desarrollar desde cero es importante valorar la capacidad para iterar rápido y hacer muchas pruebas.
 
-## Fecha y evaluación
+DistilBERT es una versión destilada que retiene el 97% del rendimiento de BERT mientras reduce el número de parámetros en un 40% y aumenta la eficiencia en un 60% **(Sanh et al., 2020)**. Esta optimización permite entrenar el modelo de manera más rápida sin sacrificar calidad en las predicciones.
 
-La práctica es individual, debe entregarse antes del miércoles, 26 de noviembre de 2025, a las 10:00 a.m. Este proyecto práctico aporta un 10% a la nota final de la asignatura, sin nota mínima requerida (la entrega es opcional).
+El _fine-tuning_ consiste en adaptar un modelo preentrenado a una tarea específica para mejorar su rendimiento. En este caso, mientras que el preentrenamiento le proporciona al modelo una comprensión general del lenguaje, el _fine-tuning_ lo especializa para identificar las posiciones de inicio y fin de las respuestas dentro de un contexto dado, **consiguiendo un 77.22% en EM y 85.34% de F1 accuracy**.
 
-## Enunciado Abierto
+El notebook se estructura en las siguientes fases:
 
-Se solicita la implementación de un proyecto completo de ajuste fino de un LM. La elección del modelo base, la técnica de ajuste y el dataset de NLP a utilizar son libres, con las siguientes condiciones fundamentales:
-
-- Se presenta un proyecto distinto los ya cubiertos en los notebooks del material de clase: clasificación de texto con una entrada mediante BERT o ajuste supervisado de Llama con QLORA.
-- QUEDA PROHIBIDO presentar trabajos que hayan sido utilizados, o se vayan a utilizar, en cualquier otra asignatura de esta u otras titulaciones.
-
-## Requisitos y Formato de Entrega
-
-La práctica debe entregarse a través del medio oficial de la asignatura antes de la fecha y hora límite. La entrega debe constar de dos ficheros idénticos en contenido, pero en formato distinto:
-
-- Apellido1_Apellido2_Nombre.ipynb: El notebook de Jupyter funcional. Se recomienda incluir enlaces (por ejemplo, a Google Drive o Hugging Face) para permitir la ejecución en Google Colab sin necesidad de cargar archivos locales.
-- Apellido1_Apellido2_Nombre.pdf: Una impresión en PDF del notebook anterior.
-
-El notebook debe documentarse en secciones de texto (Markdown), replicando el estilo de los notebooks del material de clase. El documento debe incluir, como mínimo, las siguientes secciones:
-
-- Datos del Alumno y Título del Proyecto.
-- Introducción: Descripción de la tarea de NLP, justificación de la elección del LM y la técnica de ajuste
-  fino.
-- Dataset: Descripción, fuente, estadísticas y preprocesamiento de los datos.
-- Implementación: Código de carga del LM, detalles de los hiperparámetros de entrenamiento y
-  ejecución del ajuste fino.
-- Resultados y Discusión: Presentación de las métricas de evaluación obtenidas y un análisis crítico de
-  los resultados y limitaciones.
-- Conclusiones.
-
-## Export environment
-
-```
-conda env export --from-history > environment.yml
-```
-
-## Recreate environment
-
-```
-conda env create -f environment.yml -p ./.conda
-```
+- **3. Preparación de los datos**: SQuAD, preprocesamiento con ventanas deslizantes, mantenimiento de alineación de carácter a token y generación de etiquetas a nivel de token.
+- **4. Entrenamiento**: Ajuste fino de DistilBERT para predecir fragmentos de respuesta sobre 87,735 características en aproximadamente 40.5 minutos.
+- **5. Evaluación**: Posprocesamiento de predicciones, agregación de características, cálculo de métricas de SQuAD.
+- **6. Análisis de Rendimiento**: Demostración de mejora sobre el modelo base en preguntas específicas sobre las diapositivas de clase.
