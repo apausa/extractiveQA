@@ -4,9 +4,9 @@ Este proyecto demuestra el fine-tuning de DistilBERT para el _extractive questio
 
 ## DistilBERT
 
-Se ha seleccionado DistilBERT en lugar de modelos como BERT por razones de eficiencia computacional: al desarrollar desde cero es importante valorar la capacidad para iterar rápido y hacer muchas pruebas.
+Se ha seleccionado DistilBERT en lugar de modelos como BERT por razones de eficiencia computacional: al desarrollar desde cero es importante valorar la capacidad para iterar rápido y hacer muchas pruebas. DistilBERT es una versión destilada que retiene el 97% del rendimiento de BERT mientras reduce el número de parámetros en un 40% y aumenta la eficiencia en un 60% **(Sanh et al., 2020)**. Esta optimización permite entrenar el modelo de manera más rápida sin sacrificar calidad en las predicciones.
 
-DistilBERT es una versión destilada que retiene el 97% del rendimiento de BERT mientras reduce el número de parámetros en un 40% y aumenta la eficiencia en un 60% **(Sanh et al., 2020)**. Esta optimización permite entrenar el modelo de manera más rápida sin sacrificar calidad en las predicciones.
+Las arquitecturas basadas exclusivamente en codificador como BERT, destacan al responder cuestiones directas, pero presentan limitaciones ante preguntas abiertas (para estas situaciones que requieren elaboración, las arquitecturas de codificador-decodificador resultan más apropiadas ya que pueden generar respuestas más elaboradas).
 
 ## *Fine-tuning*
 
