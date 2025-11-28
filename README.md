@@ -5,7 +5,7 @@ To do:
 - la posibilidad de cambiar el modelo
 - Ver también el accuracy del modelo base (sin fine-tuning)
 - Cambiar la parte de los ejemplos
-- Cambiar el markup para que tenga relación con web science
+- Cambiar el markdown para que tenga relación con web science
 
 Este proyecto demuestra el fine-tuning de DistilBERT para el _extractive question-answering_ usando el Stanford Question Answering Dataset (SQuAD) con preprocesamiento de ventanas deslizantes. A diferencia de los enfoques generativos que crean texto, esta tarea identifica y extrae el fragmento exacto del texto a partir del contexto en el que se enmarca una pregunta.
 
